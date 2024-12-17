@@ -1,0 +1,37 @@
+name: cv
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flame: ^1.22.0
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.0.16
+  google_fonts: ^6.2.1
+  provider: ^6.1.2
+  url_launcher: ^6.3.1
+  webview_flutter: ^4.10.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+
+  assets:
+    - lib/assets/images/Aleksandra.jpeg
+    - lib/assets/icons/dart.svg
+    - lib/assets/icons/flutter.svg
+    - lib/assets/icons/firebase.svg
+    - lib/assets/icons/java.svg
+    - lib/assets/icons/php.svg
+    - lib/assets/icons/mysql.svg
+    - lib/assets/icons/javascript.svg
+    - lib/assets/icons/api.svg
