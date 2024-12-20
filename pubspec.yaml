@@ -7,6 +7,7 @@ environment:
   sdk: ^3.5.4
 
 dependencies:
+  country_flags: ^3.1.0
   flame: ^1.22.0
   flutter:
     sdk: flutter
@@ -27,6 +28,7 @@ flutter:
 
   assets:
     - lib/assets/images/Aleksandra.jpeg
+    - lib/assets/images/zosia-i-ja.jpeg
     - lib/assets/icons/dart.svg
     - lib/assets/icons/flutter.svg
     - lib/assets/icons/firebase.svg
@@ -35,3 +37,5 @@ flutter:
     - lib/assets/icons/mysql.svg
     - lib/assets/icons/javascript.svg
     - lib/assets/icons/api.svg
+    - lib/assets/icons/england.svg
+    - lib/assets/icons/germany.svg

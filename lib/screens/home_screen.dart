@@ -8,6 +8,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   double _opacity = 0.0;
+  bool isExpanded = false; // Kontroluje rozwinięcie przycisków
 
   @override
   void initState() {
@@ -30,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Witaj!', style: GoogleFonts.poppins()),
         backgroundColor: Color(0xFF00B0B9), // Turquoise
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -56,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 10),
               Text(
-                'Dart | Flutter | PHP | JAVA | RESTful API | Firebase',
+                'Dart | Flutter | PHP | JAVA | RESTful API | Firebase | JavaScript',
                 style: GoogleFonts.poppins(
                   fontSize: 14,
                   color: Colors.white70,
@@ -64,41 +66,47 @@ class _HomeScreenState extends State<HomeScreen> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 30),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/about');
-                      },
-                      icon: Icon(Icons.person, color: Colors.white),
-                      label: Text('O mnie', style: GoogleFonts.poppins(color: Colors.white)),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF00B0B9), // Turquoise
-                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+              Column(
+                children: [
+                  // Row dla pierwszych dwóch przycisków
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center, // Ustawienie przycisków na środku
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/about');
+                        },
+                        icon: Icon(Icons.person, color: Colors.white),
+                        label: Text('O mnie', style: GoogleFonts.poppins(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF00B0B9), // Turquoise
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(width: 20),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/skills');
-                      },
-                      icon: Icon(Icons.lightbulb, color: Colors.white),
-                      label: Text('Umiejętności', style: GoogleFonts.poppins(color: Colors.white)),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF00B0B9), // Turquoise
-                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                      SizedBox(width: 20), // Odstęp między pierwszym i drugim przyciskiem
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/skills');
+                        },
+                        icon: Icon(Icons.lightbulb, color: Colors.white),
+                        label: Text('Umiejętności', style: GoogleFonts.poppins(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF00B0B9), // Turquoise
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(width: 20),
+                    ],
+                  ),
+
+                  // Jeśli isExpanded, dodajemy trzeci przycisk
+                  if (isExpanded) ...[
+                    SizedBox(height: 20), // Odstęp przed trzecim przyciskiem
                     ElevatedButton.icon(
                       onPressed: () {
                         Navigator.pushNamed(context, '/contact');
@@ -114,8 +122,26 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ],
-                ),
-              ),
+
+                  // Przycisk rozwinięcia
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        isExpanded = !isExpanded; // Zmienia stan rozwinięcia
+                      });
+                    },
+                    child: Text(isExpanded ? 'Mniej' : 'Więcej'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF00B0B9),
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
@@ -123,6 +149,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-
-
