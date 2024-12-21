@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SkillsScreen extends StatelessWidget {
+
   final List<Map<String, dynamic>> skills = [
-    {'name': 'PHP', 'icon': 'lib/assets/icons/php.svg', 'level': 6},
-    {'name': 'Java', 'icon': 'lib/assets/icons/java.svg', 'level': 5},
+    {'name': 'Java', 'icon': 'lib/assets/icons/java.svg', 'level': 6},
     {'name': 'JavaScript', 'icon': 'lib/assets/icons/javascript.svg', 'level': 6},
+    {'name': 'HTML5', 'icon': 'lib/assets/icons/html.svg', 'level': 6},
+    {'name': 'PHP', 'icon': 'lib/assets/icons/php.svg', 'level': 6},
     {'name': 'MySQL', 'icon': 'lib/assets/icons/mysql.svg', 'level': 6},
     {'name': 'RESTful API', 'icon': 'lib/assets/icons/api.svg', 'level': 6},
+    {'name': 'Postman', 'icon': 'lib/assets/icons/postman.svg', 'level': 6},
     {'name': 'Flutter', 'icon': 'lib/assets/icons/flutter.svg', 'level': 6},
     {'name': 'Dart', 'icon': 'lib/assets/icons/dart.svg', 'level': 6},
     {'name': 'Język angielski', 'icon': 'lib/assets/icons/england.svg', 'level': 6},
     {'name': 'Język niemiecki', 'icon': 'lib/assets/icons/germany.svg', 'level': 6},
   ];
-
   final List<Map<String, dynamic>> hobbies = [
     {'name': 'Literatura grozy oraz fantasy', 'icon': Icons.book},
     {'name': 'Gra na skrzypcach', 'icon': Icons.music_note},
@@ -22,6 +24,18 @@ class SkillsScreen extends StatelessWidget {
     {'name': 'Programowanie', 'icon': Icons.code},
     {'name': 'Łamigłówki logiczne', 'icon': Icons.extension},
   ];
+  final Map<String, String> hobbyDescriptions = {
+    'Gra na skrzypcach': 'Gra na skrzypcach jest niesamowitym hobby, które rozwija cierpliwość, precyzję i wyobraźnię muzyczną!',
+    'Literatura grozy oraz fantasy': 'Czytanie książek pozwala odkrywać nowe światy i rozwijać wyobraźnię!',
+    'Gotowanie': 'Gotowanie to sztuka, która łączy kreatywność z praktycznymi umiejętnościami. '
+        'Tworzenie nowych potraw rozwija wyobraźnię i daje satysfakcję z dzielenia się nimi z innymi.',
+    'Programowanie': 'Programowanie to klucz do świata technologii, który uczy logicznego myślenia,'
+        'rozwiązywania problemów i daje możliwość tworzenia niesamowitych projektów.',
+    'Gry video': 'Gry wideo to świetny sposób na relaks i rozrywkę, '
+        'które jednocześnie rozwijają refleks, spostrzegawczość oraz umiejętność pracy zespołowej.',
+    'Łamigłówki': 'Rozwiązywanie łamigłówek logicznych to trening dla mózgu, '
+        'który poprawia koncentrację, rozwija zdolności analityczne i uczy cierpliwości.'
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +43,7 @@ class SkillsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Umiejętności i Zainteresowania',
-          style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
+          style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 19),
         ),
         backgroundColor: Colors.cyan.shade400,
       ),
@@ -111,8 +125,18 @@ class SkillsScreen extends StatelessWidget {
                                       ),
                                     ),
                                     SizedBox(height: 16),
+                                    // Text(
+                                    //   'Świetny wybór! Warto poświęcić więcej czasu na "${hobby['name']}".',
+                                    //   style: TextStyle(
+                                    //     fontSize: 16,
+                                    //     color: Colors.white70,
+                                    //     height: 1.5,
+                                    //   ),
+                                    //   textAlign: TextAlign.center,
+                                    // ),
                                     Text(
-                                      'Świetny wybór! Warto poświęcić więcej czasu na "${hobby['name']}".',
+                                      hobbyDescriptions[hobby['name']] ??
+                                          'Oddanie się swojemu hobby to doskonały sposób na rozwój, relaks i czerpanie radości z pasji.',
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.white70,
@@ -120,6 +144,8 @@ class SkillsScreen extends StatelessWidget {
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
+
+
                                     SizedBox(height: 24),
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(
@@ -260,3 +286,5 @@ class SkillWithLevel extends StatelessWidget {
     );
   }
 }
+
+

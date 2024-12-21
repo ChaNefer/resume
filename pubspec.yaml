@@ -39,3 +39,5 @@ flutter:
     - lib/assets/icons/api.svg
     - lib/assets/icons/england.svg
     - lib/assets/icons/germany.svg
+    - lib/assets/icons/html.svg
+    - lib/assets/icons/postman.svg
